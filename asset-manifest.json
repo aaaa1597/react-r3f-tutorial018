@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/react-r3f-tutorial018/static/css/main.03d1a1ce.css",
+    "main.js": "/react-r3f-tutorial018/static/js/main.f81e77f3.js",
+    "static/js/787.57a89f3d.chunk.js": "/react-r3f-tutorial018/static/js/787.57a89f3d.chunk.js",
+    "index.html": "/react-r3f-tutorial018/index.html",
+    "main.03d1a1ce.css.map": "/react-r3f-tutorial018/static/css/main.03d1a1ce.css.map",
+    "main.f81e77f3.js.map": "/react-r3f-tutorial018/static/js/main.f81e77f3.js.map",
+    "787.57a89f3d.chunk.js.map": "/react-r3f-tutorial018/static/js/787.57a89f3d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.03d1a1ce.css",
+    "static/js/main.f81e77f3.js"
+  ]
+}
