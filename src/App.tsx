@@ -1,10 +1,10 @@
 import React, {useRef} from 'react';
 import './App.css';
-import { Canvas, useFrame, MeshProps, useLoader } from '@react-three/fiber'
+import { Canvas, useLoader } from '@react-three/fiber'
 import * as THREE from 'three'
 import { Stats, OrbitControls, Environment } from '@react-three/drei'
 import { useControls } from 'leva'
-
+import { Model } from './Bedroom3d'
 
 const Lights = () => {
   const directionalRef = useRef<THREE.DirectionalLight>(null!)
@@ -31,36 +31,6 @@ const Lights = () => {
   )
 }
 
-type BoxProps = {
-  props: MeshProps;
-  wireframe?: boolean;
-}
-
-const Box = (boxprops: BoxProps) => {
-  const ref = useRef<THREE.Mesh>(null!)
-
-  useFrame((_, delta) => {
-    if( !ref.current) return
-    ref.current.rotation.x += 1 * delta
-    ref.current.rotation.y += 0.5 * delta
-  })
-
-  return (
-    <mesh {...boxprops.props} ref={ref}>
-      <boxGeometry />
-    </mesh>
-  )
-}
-
-const Floor = () => {
-  return (
-    <mesh rotation-x={-Math.PI / 2} receiveShadow={true}>
-      <circleGeometry args={[10]} />
-      <meshStandardMaterial />
-    </mesh>
-  )
-}
-
 const App = () => {
   const texture = useLoader(THREE.TextureLoader, './imgs/grid.png')
 
@@ -69,11 +39,7 @@ const App = () => {
       <Canvas camera={{ position: [4, 4, 3] }} shadows>
         <Lights />
         <Environment preset="forest" background />
-        <Box props={{position:[3, 1, 0], name:"meshBasicMaterial",    material: new THREE.MeshBasicMaterial({ map: texture })}}/>
-        <Box props={{position:[1, 1, 0], name:"meshNormalMaterial",   material: new THREE.MeshNormalMaterial({flatShading: true,})}}/>
-        <Box props={{position:[1, 3, 0], name:"meshPhongMaterial",    material: new THREE.MeshPhongMaterial({flatShading: true, map: texture,})}}/>
-        <Box props={{position:[3, 3, 0], name:"MeshStandardMaterial", material: new THREE.MeshStandardMaterial({flatShading: true, map: texture,})}}/>
-        <Floor />
+        <Model />
         <OrbitControls />
         <axesHelper args={[5]} />
         <gridHelper />
